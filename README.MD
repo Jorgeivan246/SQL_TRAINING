@@ -9,5 +9,7 @@ Muy bien , comenzamos :)
 
 SQL en 6 preguntas.A modo de repaso o introducción expongo mi forma de pensar el orden de las consultas en SQL:
 
+![SQL en 6 preguntas](graficos/tutorial_sql.png)
+
 
 
