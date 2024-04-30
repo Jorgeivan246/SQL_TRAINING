@@ -75,3 +75,46 @@ SELECT emp.nomEmp,emp.comisionE,emp.salEmp FROM empleados emp WHERE emp.comision
 SELECT em.nomEmp,em.comisionE,em.salEmp FROM empleados em WHERE em.comisionE <= em.salEmp*0.3
 
 
+
+
+--13.Elabore un listado donde para cada fila, figure ‘Nombre’ y ‘Cargo’ antes del valor respectivo para cada empleado.
+
+
+SELECT em.nomEmp,em.cargoE FROM empleados em;
+
+
+--14. Hallar el salario y la comisión de aquellos empleados cuyo número de documento de identidad es superior al '19.709.802'
+
+
+SELECT em.salEmp,em.comisionE FROM empleados em WHERE em.nDIEmp >  '19.709.802'
+
+--15. Muestra los empleados cuyo nombre empiece entre las letras J y Z (rango).Liste estos empleados y su cargo por orden alfabético.
+
+
+
+--SELECT em.nomEmp,em.cargoE FROM empleados em WHERE lower(nomemp) > 'j' and lower(nomemp) < 'z' 
+
+
+--16. Listar el salario, la comisión, el salario total (salario + comisión), documento de identidad del empleado y nombre, de aquellos empleados que tienen comisión superior a 1.000.000, ordenar el informe por el número del documento de identidad
+
+
+SELECT em.salEmp as salario,em.comisionE as comision,em.salEmp+em.comisionE as salario_total, em.nDIEmp,em.nomEmp
+FROM empleados em WHERE em.comisionE > 1000000 ORDER BY em.nDIEmp
+
+
+
+--17. Obtener un listado similar al anterior, pero de aquellos empleados que NO tienen comisión
+
+SELECT em.salEmp as salario,em.comisionE as comision,em.salEmp+em.comisionE as salario_total, em.nDIEmp,em.nomEmp
+FROM empleados em WHERE em.comisionE <= 0 ORDER BY em.nDIEmp
+
+
+--18. Hallar los empleados cuyo nombre no contiene la cadena "MA"
+
+SELECT nomEmp FROM empleados em WHERE em.nomEmp NOT LIKE '%MA%'
+
+
+--19. Obtener los nombres de los departamentos que no sean “Ventas” ni “Investigación” NI 'MANTENIMIENTO', ordenados por ciudad.
+
+
+SELECT depa.nombreDpto FROM departamentos depa WHERE depa.nombreDpto NOT IN ('VENTAS','INVESTIGACION','MANTENIMIENTO');
