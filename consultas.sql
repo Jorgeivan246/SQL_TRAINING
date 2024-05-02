@@ -118,3 +118,39 @@ SELECT nomEmp FROM empleados em WHERE em.nomEmp NOT LIKE '%MA%'
 
 
 SELECT depa.nombreDpto FROM departamentos depa WHERE depa.nombreDpto NOT IN ('VENTAS','INVESTIGACION','MANTENIMIENTO');
+
+
+--20. Obtener el nombre y el departamento de los empleados con cargo 'Secretaria' o 'Vendedor', que no trabajan en el departamento de “PRODUCCION”, cuyo salario es superior a $1.000.000, ordenados por fecha de incorporación.
+
+describe empleados;
+
+SELECT depa.nombreDpto,em.nomEmp FROM empleados em INNER JOIN departamentos depa ON em.codDepto=depa.codDepto
+
+WHERE depa.nombreDpto <> 'PRODUCCION' AND em.salEmp > 1000000 ORDER BY em.fecIncorporacion DESC;
+
+
+--21. Obtener información de los empleados cuyo nombre tiene exactamente 11 caracteres
+
+
+SELECT * FROM empleados em WHERE length(em.nomEmp) = 11;
+
+--22. Obtener información de los empleados cuyo nombre tiene al menos 11 caracteres
+
+SELECT * FROM empleados em WHERE length(em.nomEmp) >= 11;
+
+
+--23. Listar los datos de los empleados cuyo nombre inicia por la letra 'M', su salario es mayor a $800.000 o reciben comisión y trabajan para el departamento de 'VENTAS'
+
+
+SELECT * FROM empleados em INNER JOIN departamentos depa ON em.codDepto=depa.codDepto 
+WHERE lower(em.nomEmp) LIKE 'm%' AND ( em.salEmp > 800000 OR em.comisionE > 0 )  AND depa.nombreDpto = 'VENTAS'
+
+
+--24. Obtener los nombres, salarios y comisiones de los empleados que reciben un salario situado entre la mitad de la comisión la propia comisión
+
+
+ SELECT em.nomEmp,em.salEmp,em.comisionE FROM empleados em  INNER JOIN departamentos depa ON em.codDepto=depa.codDepto  
+ WHERE em.salEmp BETWEEN em.salEmp/2 AND  em.salEmp 
+
+
+
